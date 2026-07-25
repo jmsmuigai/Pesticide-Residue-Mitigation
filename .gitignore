@@ -1,0 +1,25 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Environment / Keys
+.env
+*.key
+*.pem
+
+# IDE / System
+.DS_Store
+.vscode/
+.idea/
+extracted_doc.txt
+
+# Temp logs
+*.log
+repo_clone/
