@@ -1,9 +1,9 @@
-# 🥬 SafePlate Kenya v3 — Ministry of Health Advisory Solution & AI Agrotech Platform
+# 🥬 SafePlate Kenya v4 — Cell Anatomy, 3D Infographics, MOH Solution & Agrotech Portal
 
-> **Direct Technical Response & System Solution for Ministry of Health Advisory Ref: MOH/ADM/1/2/52 (22nd July 2026)**
+> **Official Response to Ministry of Health Advisory Ref: MOH/ADM/1/2/52 (PS Mary Muthoni Muriuki, 22nd July 2026)**
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-3.0.0-009688.svg)](https://fastapi.tiangolo.com/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-4.0.0-009688.svg)](https://fastapi.tiangolo.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-jmsmuigai%2FPesticide--Residue--Mitigation-green.svg)](https://github.com/jmsmuigai/Pesticide-Residue-Mitigation)
 
@@ -11,37 +11,14 @@
 
 ## 🏛️ Executive Summary & MOH Advisory Solution (MOH/ADM/1/2/52)
 
-On **22nd July 2026**, PS Mary Muthoni Muriuki (Ministry of Health, State Department for Public Health & Professional Standards) issued an official advisory (**Ref: MOH/ADM/1/2/52**) to all County Executive Committee Members (CECM-Health), County Directors of Health (CDH), and Chief Officers for Health (COH) regarding pesticide residues in fresh produce across public markets.
+**SafePlate Kenya v4** is a comprehensive AI-driven geospatial and toxicological platform addressing the **Ministry of Health Advisory (Ref: MOH/ADM/1/2/52)** regarding pesticide residues in fresh produce across public markets.
 
-**SafePlate Kenya v3** serves as the primary technical solution and digital intelligence system addressing all directives in the advisory:
-
-### Solutions to the 5 Mandatory County Actions:
-1. **Market Surveillance**: RAMANI 2.0 real-time market risk radar mapping high-probability contamination nodes across Githurai, Muthurwa, Kangemi, and Nakuru wholesale markets.
-2. **Public Communication & Household Preparation**: OSHA Household Wash Calculator and visual guides demonstrating **60–70% residue reduction** via thorough washing, soaking in 1:3 vinegar or 2% salt water, and peeling.
-3. **Trader & Producer Coordination**: SHAMBA Organic Switchboard generating crop-specific 14-day Pre-Harvest Interval (PHI) compliance calendars and MRL compliance checklists.
-4. **County Reporting Portal**: TAKWIMU Automated Digital Reporting Portal compiling county inspection capacity logs into standardized JSON audit reports for Ministry submission.
-5. **Inter-Agency Referral Gateway**: One-click digital referral gateway dispatching lab violation flags directly to PCPB and KEPHIS inspectorships.
-
----
-
-## 🎨 Visual Assets & Crop Gallery
-
-SafePlate Kenya v3 incorporates real photorealistic image assets generated via Gemini API / Nano banana for ALL monitored horticultural commodities:
-- 🍅 **Tomatoes (Nyanya)** (`crop_tomatoes.png`): MRL 0.01 ppm, PHI 14 days.
-- 🥬 **Sukuma Wiki / Kale** (`crop_sukuma.png`): Multi-residue load up to 7 active compounds.
-- 🍃 **Spinach** (`crop_spinach.png`): Acephate & Chlorpyrifos monitoring.
-- 🧅 **Bulb Onions / Kitunguu** (`crop_onions.png`): Low-risk baseline crop.
-- 🫑 **Capsicum / Pilipili Hoho** (`crop_capsicum.png`): Acephate pressure.
-- 🥕 **Carrots** (`crop_carrots.png`): Linuron residue tracking.
-- 🥬 **Cabbage** (`crop_cabbage.png`): Lambda-cyhalothrin.
-- 🥔 **Potatoes / Viazi** (`crop_potatoes.png`): Copper & difenoconazole late-blight spray schedules.
-
----
-
-## 🧮 Verified Math Engines
-
-- **SCS-CN Hydrology Runoff**: $Q(P=55\text{ mm}, CN=79) = \mathbf{15.80\text{ mm}}$ (byte-identical in Python and JS).
-- **Household Wash Mitigation**: Benchmark 1:3 vinegar soak yields **68.0% residue reduction** (0.3200 remaining fraction), satisfying the Ministry's 60–70% reduction target.
+### Key v4 Features:
+1. **Pesticide-to-Cell Anatomy Diagram (`anatomy_diagram.png`)**: Labeled scientific diagram illustrating the 5-stage pathway of synthetic pesticides from crop spray $\rightarrow$ produce residue $\rightarrow$ gut ingestion $\rightarrow$ bloodstream transit $\rightarrow$ cell mitochondrial toxicity.
+2. **Simple 10-Year-Old Explanation Guides**: Step-by-step kid-friendly procedures in English and Kiswahili explaining how salt/vinegar washing removes 60-70% of residues and how organic farming protects families.
+3. **Python Trend Analytics Engine (`safeplate_platform/analytics.py`)**: Analyzes 2020–2026 time series trends and classifies Red Zones (Githurai, Muthurwa, Mwea Kirinyaga, Kangemi).
+4. **Photorealistic Crop Gallery**: Real image assets for all 8 monitored commodities: Tomatoes, Sukuma Wiki/Kale, Spinach, Bulb Onions, Capsicum, Carrots, Cabbage, and Potatoes.
+5. **Multi-Themed Web Portal**: Distinct visual themes for different sections (Agrotech Emerald, Cellular Purple, Household Mint, Crimson Warning, Azure Ocean, Golden Harvest).
 
 ---
 
@@ -55,8 +32,8 @@ bash install.sh
 
 ### Server & Command Shortcuts
 ```bash
-python3 safeplate_platform/mine_and_clean.py # Run surveillance data mining
-make test                                    # Run byte-identical self-tests
+python3 safeplate_platform/analytics.py     # Compute 2020-2026 trend series & Red Zones
+python3 generate_diagrams.py                # Re-synthesize anatomy diagrams & 3D infographics
 make web                                     # Launch local web portal (http://localhost:8080)
 make serve                                   # Launch FastAPI backend (http://localhost:8000/docs)
 ```

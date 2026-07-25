@@ -1,7 +1,7 @@
 """
-FastAPI REST API Service for SafePlate Kenya v3
+FastAPI REST API Service for SafePlate Kenya v4
 Exposes HTTP 200 REST Endpoints for Hydrology, Wash Calculations,
-MOH Advisory Solutions (Ref: MOH/ADM/1/2/52), Chemical Active Databases, and Gemini Agent.
+MOH Advisory Solutions (Ref: MOH/ADM/1/2/52), Trend Analytics, and Gemini Agent.
 """
 
 from fastapi import FastAPI, HTTPException
@@ -12,21 +12,15 @@ import os
 
 from .hydrology import calculate_runoff, HydrologyModel
 from .washing import calculate_wash_efficiency, WashingModel
-from .datasets import (
-    ACTIVE_CHEMICALS,
-    PCPB_BIOPESTICIDES,
-    ORGANIC_STATISTICS,
-    ALTERNATIVE_BIOPESTICIDES,
-    COUNTY_PRPI_INDEX,
-    MARKET_HOTSPOTS
-)
+from .datasets import ACTIVE_CHEMICALS, PCPB_BIOPESTICIDES, ORGANIC_STATISTICS, ALTERNATIVE_BIOPESTICIDES, COUNTY_PRPI_INDEX, MARKET_HOTSPOTS
 from .gemini_agent import SafePlateGeminiAgent, run_gemini_tasks
 from .mine_and_clean import process_and_clean_data
+from .analytics import generate_analytics_data
 
 app = FastAPI(
-    title="SafePlate Kenya v3 API",
-    description="Official Response & Technical Solutions for MOH Advisory Ref: MOH/ADM/1/2/52 on Pesticide Residues",
-    version="3.0.0"
+    title="SafePlate Kenya v4 API",
+    description="Cell Anatomy, Trend Analytics & MOH Advisory Solution API Service",
+    version="4.0.0"
 )
 
 class HydrologyRequest(BaseModel):
@@ -42,7 +36,7 @@ class WashRequest(BaseModel):
 def health_check():
     return {
         "status": "HEALTHY",
-        "service": "SafePlate Kenya v3 MOH Advisory Response Platform",
+        "service": "SafePlate Kenya v4 Platform",
         "moh_ref": "MOH/ADM/1/2/52",
         "hydrology_proof": calculate_runoff(55.0, 79.0),
         "wash_proof": calculate_wash_efficiency("chlorfenapyr", "vinegar", 5.0)
@@ -52,6 +46,10 @@ def health_check():
 def get_moh_advisory_solution():
     cleaned = process_and_clean_data()
     return cleaned["moh_advisory_solution"]
+
+@app.get("/analytics/trends")
+def get_analytics_trends():
+    return generate_analytics_data()
 
 @app.get("/actives")
 def get_actives():
@@ -68,26 +66,10 @@ def get_alternatives():
 @app.post("/hydrology/calculate")
 def post_hydrology(req: HydrologyRequest):
     q_val = calculate_runoff(req.precipitation_mm, req.curve_number)
-    return {
-        "precipitation_mm": req.precipitation_mm,
-        "curve_number": req.curve_number,
-        "runoff_Q_mm": q_val,
-        "formatted_Q": f"{round(q_val, 2):.2f} mm"
-    }
+    return {"precipitation_mm": req.precipitation_mm, "curve_number": req.curve_number, "runoff_Q_mm": q_val, "formatted_Q": f"{round(q_val, 2):.2f} mm"}
 
 @app.post("/wash")
 def post_wash(req: WashRequest):
     wm = WashingModel()
-    remaining = wm.calculate_remaining(
-        chemical=req.chemical,
-        solution_type=req.solution_type,
-        soak_minutes=req.soak_minutes
-    )
-    return {
-        "chemical": req.chemical,
-        "solution_type": req.solution_type,
-        "soak_minutes": req.soak_minutes,
-        "remaining_fraction": remaining,
-        "remaining_percentage": f"{remaining * 100:.1f}%",
-        "removed_percentage": f"{(1.0 - remaining) * 100:.1f}%"
-    }
+    remaining = wm.calculate_remaining(chemical=req.chemical, solution_type=req.solution_type, soak_minutes=req.soak_minutes)
+    return {"chemical": req.chemical, "solution_type": req.solution_type, "soak_minutes": req.soak_minutes, "remaining_fraction": remaining, "remaining_percentage": f"{remaining * 100:.1f}%"}
