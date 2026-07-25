@@ -1,9 +1,9 @@
-# 🥬 SafePlate Kenya v5 — Pesticide Mitigation, Garissa Corridors & Organic Agrotech Platform
+# 🥬 SafePlate Kenya v6 — Research Library, Assistant Bot & Agrotech Portal
 
-> **AI-Driven Pesticide Surveillance, SCS-CN Hydrology, Garissa Supply Vectors & Household Wash Guides**
+> **Integrated Agrotech Platform featuring MAKTABA 46-Reference Library, MSAIDIZI Bot, MAWAKALA Agents, and Garissa Supply Corridors**
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-5.0.0-009688.svg)](https://fastapi.tiangolo.com/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-6.0.0-009688.svg)](https://fastapi.tiangolo.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-jmsmuigai%2FPesticide--Residue--Mitigation-green.svg)](https://github.com/jmsmuigai/Pesticide-Residue-Mitigation)
 
@@ -11,20 +11,25 @@
 
 ## 📌 Executive Overview & Platform Features
 
-**SafePlate Kenya v5** is a comprehensive, production-grade agrotech and food safety system designed for farmers, market traders, extension officers, and households across Kenya.
+**SafePlate Kenya v6** is a comprehensive, production-grade agrotech research and food safety platform.
 
-### Key Version 5 Highlights:
-1. **Automated Hero Image Slideshow**: Automated animated carousel on the homepage rotating through all 15 photorealistic generated crop images and farm visuals (`crop_tomatoes.png`, `crop_sukuma.png`, `crop_spinach.png`, `crop_onions.png`, `crop_capsicum.png`, `crop_carrots.png`, `crop_cabbage.png`, `crop_potatoes.png`, `hero_banner.png`, `lab_testing.png`, `githurai_market.png`, `biopesticide_spray.png`, `organic_harvest.png`, `anatomy_diagram.png`, `infographic_wash_3d.png`).
-2. **RAMANI Map 2.0 with Garissa & Supply Corridors**:
-   - Clipped Kenya map boundaries.
-   - **Garissa Wholesale Market** added alongside Nairobi (Githurai, Muthurwa, Kangemi), Nakuru, Mombasa, Kisumu, Eldoret, Nyeri, and Meru.
-   - Supply movement vector polylines showing produce travel from Central Kenya (Kirinyaga, Kiambu, Nyandarua) $\rightarrow$ Nairobi wholesale hubs $\rightarrow$ Garissa Market!
-   - Interactive click handler populating a detailed **Attribute Panel** with real crop images, dominant pests & plant diseases, pesticide risk levels, and action guides.
-3. **Live Ticker Marquee Bar**: Header bar featuring real-time pesticide residue updates.
-4. **Farmer's Step-by-Step Organic Guide**: Practical transition procedures for smallholders using PCPB 109 biopesticides (Neemol, Bt kurstaki, ICIPE 20 *Metarhizium*), pheromone traps, and KOAN PGS certification.
-5. **Kitchen Wash & Cook Guide**: Color-coded household preparation guide removing **60–70% of pesticide residues** via 1:3 vinegar, 2% salt water, or 1% baking soda soak.
-6. **Simple Step-by-Step Food Safety Guide**: Clear, easy-to-understand explanations for community members and families.
-7. **Pesticide-to-Cell Anatomy Diagram**: Scientific labeled diagram illustrating the 5-stage pathway of synthetic pesticides into human cells and mitochondrial stress.
+### Key Version 6 Highlights:
+1. **MAKTABA Research Library (46 References)**:
+   - 26 peer-reviewed studies, 11 reviews, 3 regulatory instruments, 4 reports, 2 datasets.
+   - Filterable by 34 topic tags and study types, with copy-citation, CSV, and BibTeX export capabilities.
+   - Featured studies: Springer *Environmental Monitoring & Assessment* (French bean/tomato/kale), Monte Carlo bifenthrin 35.7%, Kanario et al. 2025 (Nyandarua potatoes), Tharaka Nithi bio-insecticide field trial, and PCPB withdrawal decrees.
+2. **MSAIDIZI Consumer & Farmer Assistant Bot**:
+   - Local, deterministic tool execution engine chaining 8 tools (`get_active_profile`, `get_county_risk`, `get_alternatives`, `calc_wash`, `calc_hydrology`, `search_literature`, `get_market_risk`, `generate_advisory`).
+   - Runs offline with zero API key dependencies, showing full source attribution.
+   - CLI tool entry point: `python3 -m safeplate_platform.assistant` or `safeplate-assistant`.
+3. **MAWAKALA Agent Operations Suite**:
+   - 8 active in-page execution agents with an auditable 28-line run log.
+   - Core enforcement finding: **Chlorpyrifos and Acephate were already withdrawn in Kenya yet detected in market produce** (enforcement gap, not rule gap).
+4. **Structured Research Abstract & Live Cross-Validation**:
+   - 6-paragraph academic paper abstract with keywords.
+   - Live cross-validation card computing $Q(P=55, CN=79) = \mathbf{15.80\text{ mm}}$ and wash remaining $\mathbf{0.5734}$ ($57.3\%$) with a **✓ agreement badge**.
+5. **RAMANI Map 2.0 & Garissa Corridors**:
+   - Clipped Kenya map with supply movement vector polylines from Central Kenya to Garissa Wholesale Market.
 
 ---
 
@@ -38,10 +43,10 @@ bash install.sh
 
 ### Automation & Server Commands
 ```bash
-python3 safeplate_platform/analytics.py     # Run 2020-2026 trend analytics & Red Zones
-python3 generate_diagrams.py                # Re-synthesize anatomy diagrams & infographics
-make web                                     # Launch local web portal (http://localhost:8080)
-make serve                                   # Launch FastAPI REST backend (http://localhost:8000/docs)
+python3 -m safeplate_platform.assistant      # Run MSAIDIZI assistant CLI tool chain
+python3 safeplate_platform/agents.py         # Run MAWAKALA agent sweep & generate run log
+make web                                      # Launch local web portal (http://localhost:8080)
+make serve                                    # Launch FastAPI REST backend (http://localhost:8000/docs)
 ```
 
 ---

@@ -1,5 +1,5 @@
 """
-SafePlate Kenya v5 - Master Mined Datasets
+SafePlate Kenya v6 - Master Mined Datasets
 Includes Garissa Wholesale Market, Central-to-Garissa transit corridors,
 pest & disease attribute mappings, active chemicals, PCPB biopesticides,
 organic statistics, and alternatives register.
@@ -121,6 +121,13 @@ ACTIVE_CHEMICALS = [
     {"name": "Linuron", "who_class": "Class II", "eu_mrl_ppm": 0.01, "prevalence_pct": 12.7, "half_life_days": 45.0, "washing_reach_pct": 35.0},
     {"name": "Carbendazim", "who_class": "Class Ib", "eu_mrl_ppm": 0.01, "prevalence_pct": 11.3, "half_life_days": 40.0, "washing_reach_pct": 28.0},
     {"name": "Imidacloprid", "who_class": "Class II", "eu_mrl_ppm": 0.01, "prevalence_pct": 10.5, "half_life_days": 35.0, "washing_reach_pct": 20.0}
+]
+
+ALTERNATIVE_BIOPESTICIDES = [
+    {"name": "Azadirachtin 0.03% EC (Neemol)", "target_pests": "Tuta absoluta, Aphids, Whiteflies", "phi_days": 0, "efficacy_pct": 84.5},
+    {"name": "Bacillus thuringiensis (Bt kurstaki)", "target_pests": "Caterpillars, Diamondback Moth", "phi_days": 0, "efficacy_pct": 88.0},
+    {"name": "ICIPE 20 (Metarhizium anisopliae)", "target_pests": "Thrips, Spider Mites", "phi_days": 0, "efficacy_pct": 82.0},
+    {"name": "Beauveria bassiana (Real Metarhizium)", "target_pests": "Whiteflies, Mealybugs", "phi_days": 0, "efficacy_pct": 80.5}
 ]
 
 PCPB_BIOPESTICIDES = {"total_registered": 109, "applied_volume_share_pct": 2.0}
