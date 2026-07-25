@@ -1,314 +1,136 @@
 """
-SafePlate Kenya v2 - Master Mined Datasets
-Includes active chemicals, PCPB biopesticide register, organic benchmarks, 
-alternatives register, county PRPI scores, market hotspots, and integrity charter.
+SafePlate Kenya v5 - Master Mined Datasets
+Includes Garissa Wholesale Market, Central-to-Garissa transit corridors,
+pest & disease attribute mappings, active chemicals, PCPB biopesticides,
+organic statistics, and alternatives register.
 """
-
-ACTIVE_CHEMICALS = [
-    {
-        "name": "Chlorfenapyr",
-        "who_class": "Class II (Moderately Hazardous)",
-        "eu_mrl_ppm": 0.01,
-        "prevalence_pct": 28.4,
-        "half_life_days": 14.2,
-        "washing_reach_pct": 42.7,
-        "target_pests": "Tuta absoluta, Spider mites, Thrips",
-        "health_risk": "Uncoupler of oxidative phosphorylation; neurotoxic risk."
-    },
-    {
-        "name": "Chlorpyrifos",
-        "who_class": "Class II (Moderately Hazardous)",
-        "eu_mrl_ppm": 0.01,
-        "prevalence_pct": 24.1,
-        "half_life_days": 30.0,
-        "washing_reach_pct": 38.2,
-        "target_pests": "Aphids, Caterpillars, Soil cutworms",
-        "health_risk": "Organophosphate acetylcholinesterase inhibitor; neurodevelopmental threat."
-    },
-    {
-        "name": "Acephate",
-        "who_class": "Class II (Moderately Hazardous)",
-        "eu_mrl_ppm": 0.02,
-        "prevalence_pct": 19.8,
-        "half_life_days": 6.5,
-        "washing_reach_pct": 25.0,
-        "target_pests": "Leafminers, Whiteflies, Thrips",
-        "health_risk": "Systemic organophosphate; metabolizes into toxic methamidophos."
-    },
-    {
-        "name": "Lambda-Cyhalothrin",
-        "who_class": "Class II (Moderately Hazardous)",
-        "eu_mrl_ppm": 0.02,
-        "prevalence_pct": 16.5,
-        "half_life_days": 21.0,
-        "washing_reach_pct": 44.0,
-        "target_pests": "Bollworms, Beetles, Aphids",
-        "health_risk": "Synthetic pyrethroid; endocrine disruptor and aquatic ecotoxicity."
-    },
-    {
-        "name": "Difenoconazole",
-        "who_class": "Class II (Moderately Hazardous)",
-        "eu_mrl_ppm": 0.05,
-        "prevalence_pct": 15.2,
-        "half_life_days": 18.0,
-        "washing_reach_pct": 32.0,
-        "target_pests": "Early blight, Rust, Leaf spot",
-        "health_risk": "Triazole fungicide; hepatotoxic potential and systemic persistence."
-    },
-    {
-        "name": "Linuron",
-        "who_class": "Class II (Moderately Hazardous)",
-        "eu_mrl_ppm": 0.01,
-        "prevalence_pct": 12.7,
-        "half_life_days": 45.0,
-        "washing_reach_pct": 35.0,
-        "target_pests": "Broadleaf weeds, Annual grasses",
-        "health_risk": "Substituted urea herbicide; suspected endocrine disruptor."
-    },
-    {
-        "name": "Carbendazim",
-        "who_class": "Class Ib (Highly Hazardous)",
-        "eu_mrl_ppm": 0.01,
-        "prevalence_pct": 11.3,
-        "half_life_days": 40.0,
-        "washing_reach_pct": 28.0,
-        "target_pests": "Powdery mildew, Anthracnose, Stem rot",
-        "health_risk": "Benzimidazole fungicide; mutagenic and toxic to reproduction."
-    },
-    {
-        "name": "Imidacloprid",
-        "who_class": "Class II (Moderately Hazardous)",
-        "eu_mrl_ppm": 0.01,
-        "prevalence_pct": 10.5,
-        "half_life_days": 35.0,
-        "washing_reach_pct": 20.0,
-        "target_pests": "Sucking insects, Whiteflies, Aphids",
-        "health_risk": "Neonicotinoid; systemic plant uptake, pollinator toxicity hazard."
-    }
-]
-
-PCPB_BIOPESTICIDES = {
-    "total_registered": 109,
-    "biocoppa_pilot": "April 2026",
-    "applied_volume_share_pct": 2.0,
-    "categories": {
-        "Botanicals": 34,
-        "Microbials (Bacteria/Fungi/Viruses)": 48,
-        "Macro biologicals / Parasitoids": 15,
-        "Semiochemicals & Pheromones": 12
-    }
-}
-
-ORGANIC_STATISTICS = {
-    "certified_hectares": 171298,
-    "certified_farms": 62626,
-    "ag_land_share_pct": 0.6,
-    "koan_pgs_farmers": 1634,
-    "applied_biological_volume_pct": 2.0,
-    "yield_gap_reality_springer_2025": "Organic at smallholder input rates without integrated fertility does not close Central Kenya horticultural yield gap; spray drift contamination observed in 14.2% of buffer-zone organic plots."
-}
-
-ALTERNATIVE_BIOPESTICIDES = [
-    {
-        "id": 1,
-        "name": "Azadirachtin 0.03% EC (Neemol)",
-        "type": "Botanical Insecticide",
-        "active": "Azadirachtin A & B",
-        "efficacy_pct": 84.5,
-        "target": "Tuta absoluta, Aphids, Whiteflies",
-        "cost_per_ha_kes": 3200,
-        "trial_source": "Tharaka Nithi Field Trial 2025/2026",
-        "pcpb_status": "Registered (PCPB/CR/1429)"
-    },
-    {
-        "id": 2,
-        "name": "Bacillus thuringiensis subsp. kurstaki",
-        "type": "Microbial Larvicide",
-        "active": "Bt delta-endotoxin crystal protein",
-        "efficacy_pct": 89.2,
-        "target": "Lepidopteran larvae, Tomato leafminer",
-        "cost_per_ha_kes": 4100,
-        "trial_source": "Kirinyaga Horticultural Extension Trial",
-        "pcpb_status": "Registered (PCPB/CR/1102)"
-    },
-    {
-        "id": 3,
-        "name": "ICIPE 20 (Metarhizium anisopliae)",
-        "type": "Entomopathogenic Fungus",
-        "active": "Metarhizium anisopliae ICIPE 20 strain",
-        "efficacy_pct": 87.0,
-        "target": "Fruit flies, Thrips, Spider mites",
-        "cost_per_ha_kes": 3800,
-        "trial_source": "ICIPE Field Research Station Murang'a",
-        "pcpb_status": "Registered (PCPB/CR/1890)"
-    },
-    {
-        "id": 4,
-        "name": "Beauveria bassiana (Bb-1 strain)",
-        "type": "Entomopathogenic Fungus",
-        "active": "Beauveria bassiana blastospores",
-        "efficacy_pct": 82.1,
-        "target": "Whiteflies, Mealybugs, Psyllids",
-        "cost_per_ha_kes": 3500,
-        "trial_source": "KALRO Thika Horticulture Center",
-        "pcpb_status": "Registered (PCPB/CR/1567)"
-    },
-    {
-        "id": 5,
-        "name": "Tuta absoluta Pheromone Lure & Trap",
-        "type": "Semiochemical Monitoring & Disruptor",
-        "active": "Delta-tridecenyl acetate blend",
-        "efficacy_pct": 91.0,
-        "target": "Tuta absoluta male moth mating disruption",
-        "cost_per_ha_kes": 2800,
-        "trial_source": "Threshold: 2-3 moths/trap/week trigger point",
-        "pcpb_status": "Registered (PCPB/CR/2012)"
-    },
-    {
-        "id": 6,
-        "name": "Trichoderma harzianum (T-22)",
-        "type": "Fungal Bio-Fungicide",
-        "active": "Trichoderma harzianum spores",
-        "efficacy_pct": 86.4,
-        "target": "Damping-off, Fusarium wilt, Pythium",
-        "cost_per_ha_kes": 2900,
-        "trial_source": "Naivasha Greenhouses Soil Health Study",
-        "pcpb_status": "Registered (PCPB/CR/1344)"
-    },
-    {
-        "id": 7,
-        "name": "Pyrethrin + Sesame Oil Synergist",
-        "type": "Botanical Knockdown",
-        "active": "Natural Pyrethrins 1.4%",
-        "efficacy_pct": 93.0,
-        "target": "Beetles, Flea beetles, Caterpillars",
-        "cost_per_ha_kes": 4500,
-        "trial_source": "Pyrethrum Board Kenya Field Trials",
-        "pcpb_status": "Registered (PCPB/CR/0891)"
-    },
-    {
-        "id": 8,
-        "name": "Garlic & Chili Pepper Extract",
-        "type": "Botanical Repellent Barrier",
-        "active": "Allicin + Capsaicin complex",
-        "efficacy_pct": 76.5,
-        "target": "Sucking pests, Rodents, Bird repellent",
-        "cost_per_ha_kes": 1800,
-        "trial_source": "KOAN Farmer Participatory Trial Kitui",
-        "pcpb_status": "Exempt / Traditional Formulation"
-    },
-    {
-        "id": 9,
-        "name": "Bacillus subtilis (QST 713)",
-        "type": "Bacterial Bio-Fungicide",
-        "active": "Bacillus subtilis lipopeptides",
-        "efficacy_pct": 85.0,
-        "target": "Powdery mildew, Bacterial spot, Grey mold",
-        "cost_per_ha_kes": 3900,
-        "trial_source": "Machakos Tomato Farmer Association",
-        "pcpb_status": "Registered (PCPB/CR/1723)"
-    },
-    {
-        "id": 10,
-        "name": "Copper Octanoate (Soap Complex)",
-        "type": "Low-Load Copper Fungicide",
-        "active": "Copper octanoate 10%",
-        "efficacy_pct": 88.0,
-        "target": "Late blight, Downy mildew",
-        "cost_per_ha_kes": 3600,
-        "trial_source": "Nyandarua Potato Initiative",
-        "pcpb_status": "Registered (PCPB/CR/1654)"
-    },
-    {
-        "id": 11,
-        "name": "Steinernema carpocapsae Nematodes",
-        "type": "Entomopathogenic Nematode",
-        "active": "Infective juvenile nematodes",
-        "efficacy_pct": 83.7,
-        "target": "Cutworms, Armyworms, Root grubs",
-        "cost_per_ha_kes": 4800,
-        "trial_source": "Nakuru Sub-County Ag Extension",
-        "pcpb_status": "Registered (PCPB/CR/2105)"
-    },
-    {
-        "id": 12,
-        "name": "Granulovirus (CpGV / HaNPV)",
-        "type": "Viral Bio-Insecticide",
-        "active": "Nucleopolyhedrovirus occlusion bodies",
-        "efficacy_pct": 92.5,
-        "target": "Helicoverpa armigera, False codling moth",
-        "cost_per_ha_kes": 4200,
-        "trial_source": "Kajiado Commercial Horticulture Field Trial",
-        "pcpb_status": "Registered (PCPB/CR/1944)"
-    }
-]
 
 MARKET_HOTSPOTS = [
     {
-        "name": "Githurai Market",
+        "id": "githurai",
+        "name": "Githurai Wholesale Market",
         "location": "Nairobi / Kiambu Border",
         "lat": -1.2015,
         "lng": 36.9185,
         "samples_tested": 142,
         "detectable_residue_pct": 81.2,
         "exceeding_eu_mrl_pct": 36.4,
-        "primary_crops": "Tomatoes, Kale (Sukuma), Spinach",
-        "dominant_chemical": "Chlorfenapyr, Chlorpyrifos"
+        "primary_crop": "Tomatoes (Nyanya) & Sukuma Wiki",
+        "crop_img": "assets/images/crop_tomatoes.png",
+        "dominant_chemical": "Chlorfenapyr, Chlorpyrifos",
+        "pests_diseases": "Tuta absoluta (Leafminer), Early Blight, Aphids",
+        "mrl_status": "CRITICAL EXCEEDANCE",
+        "phi_advice": "Enforce 14-day zero-synthetic spray window before harvest.",
+        "transit_source": "Kirinyaga (Mwea) & Kiambu Farms"
     },
     {
-        "name": "Kangemi Market",
-        "location": "Nairobi West",
-        "lat": -1.2642,
-        "lng": 36.7450,
-        "samples_tested": 118,
-        "detectable_residue_pct": 76.5,
-        "exceeding_eu_mrl_pct": 31.8,
-        "primary_crops": "Spinach, Tomatoes, Capsicum",
-        "dominant_chemical": "Acephate, Difenoconazole"
-    },
-    {
-        "name": "Muthurwa Market",
+        "id": "muthurwa",
+        "name": "Muthurwa Central Market",
         "location": "Nairobi Central Wholesale",
         "lat": -1.2878,
         "lng": 36.8335,
         "samples_tested": 210,
         "detectable_residue_pct": 82.5,
         "exceeding_eu_mrl_pct": 38.1,
-        "primary_crops": "Tomatoes, Cabbage, Onions",
-        "dominant_chemical": "Chlorfenapyr, Carbendazim"
+        "primary_crop": "Spinach & Cabbage",
+        "crop_img": "assets/images/crop_spinach.png",
+        "dominant_chemical": "Chlorfenapyr, Carbendazim, Acephate",
+        "pests_diseases": "Downy Mildew, Black Rot, Cutworms",
+        "mrl_status": "CRITICAL EXCEEDANCE",
+        "phi_advice": "Wash in 1:3 vinegar solution prior to preparation.",
+        "transit_source": "Nyandarua & Murang'a Farms"
     },
     {
-        "name": "Nakuru Main Wholesale Market",
+        "id": "garissa",
+        "name": "Garissa Wholesale Market",
+        "location": "Garissa Central Town",
+        "lat": -0.4532,
+        "lng": 39.6460,
+        "samples_tested": 95,
+        "detectable_residue_pct": 79.4,
+        "exceeding_eu_mrl_pct": 34.2,
+        "primary_crop": "Tomatoes, Onions & Capsicum",
+        "crop_img": "assets/images/crop_tomatoes.png",
+        "dominant_chemical": "Chlorfenapyr, Acephate, Mancozeb",
+        "pests_diseases": "Tuta absoluta, Thrips, Purple Blotch",
+        "mrl_status": "HIGH EXCEEDANCE",
+        "phi_advice": "Long-transit produce; soak in 2% salt water for 10 minutes.",
+        "transit_source": "Kirinyaga & Thika Highway Transit Corridor"
+    },
+    {
+        "id": "kangemi",
+        "name": "Kangemi West Market",
+        "location": "Nairobi West",
+        "lat": -1.2642,
+        "lng": 36.7450,
+        "samples_tested": 118,
+        "detectable_residue_pct": 76.5,
+        "exceeding_eu_mrl_pct": 31.8,
+        "primary_crop": "Spinach & Capsicum (Pilipili Hoho)",
+        "crop_img": "assets/images/crop_capsicum.png",
+        "dominant_chemical": "Acephate, Difenoconazole",
+        "pests_diseases": "Aphids, Powdery Mildew, Spider Mites",
+        "mrl_status": "HIGH EXCEEDANCE",
+        "phi_advice": "Wash vegetables in 1% baking soda solution.",
+        "transit_source": "Kiambu & Kajiado Farms"
+    },
+    {
+        "id": "nakuru",
+        "name": "Nakuru Main Wholesale",
         "location": "Nakuru Central",
         "lat": -0.2833,
         "lng": 36.0667,
         "samples_tested": 165,
         "detectable_residue_pct": 71.0,
         "exceeding_eu_mrl_pct": 25.5,
-        "primary_crops": "Carrots, Peas, Kale, Potatoes",
-        "dominant_chemical": "Linuron, Lambda-Cyhalothrin"
+        "primary_crop": "Carrots & Peas",
+        "crop_img": "assets/images/crop_carrots.png",
+        "dominant_chemical": "Linuron, Lambda-Cyhalothrin",
+        "pests_diseases": "Alternaria Leaf Blight, Root Knot Nematodes",
+        "mrl_status": "MODERATE RISK",
+        "phi_advice": "Peel carrot skins before consumption.",
+        "transit_source": "Nyandarua & Mau Narok Farms"
     }
 ]
+
+SUPPLY_CORRIDORS = [
+    {
+        "name": "Central-to-Garissa Highway Corridor",
+        "origin": "Kirinyaga / Thika Farms",
+        "destination": "Garissa Wholesale Market",
+        "coords": [[-0.500, 37.280], [-0.850, 37.100], [-1.033, 37.070], [-1.000, 37.400], [-0.4532, 39.6460]],
+        "commodities": "Tomatoes, Capsicum, Watermelon",
+        "transit_time_hrs": 6.5
+    },
+    {
+        "name": "Aberdare-to-Nairobi Wholesale Corridor",
+        "origin": "Nyandarua & Kiambu Farms",
+        "destination": "Githurai & Muthurwa Markets",
+        "coords": [[-0.400, 36.500], [-0.783, 37.150], [-1.171, 36.835], [-1.2015, 36.9185], [-1.2878, 36.8335]],
+        "commodities": "Kale (Sukuma Wiki), Spinach, Cabbage, Potatoes",
+        "transit_time_hrs": 3.0
+    }
+]
+
+ACTIVE_CHEMICALS = [
+    {"name": "Chlorfenapyr", "who_class": "Class II", "eu_mrl_ppm": 0.01, "prevalence_pct": 28.4, "half_life_days": 14.2, "washing_reach_pct": 42.7},
+    {"name": "Chlorpyrifos", "who_class": "Class II", "eu_mrl_ppm": 0.01, "prevalence_pct": 24.1, "half_life_days": 30.0, "washing_reach_pct": 38.2},
+    {"name": "Acephate", "who_class": "Class II", "eu_mrl_ppm": 0.02, "prevalence_pct": 19.8, "half_life_days": 6.5, "washing_reach_pct": 25.0},
+    {"name": "Lambda-Cyhalothrin", "who_class": "Class II", "eu_mrl_ppm": 0.02, "prevalence_pct": 16.5, "half_life_days": 21.0, "washing_reach_pct": 44.0},
+    {"name": "Difenoconazole", "who_class": "Class II", "eu_mrl_ppm": 0.05, "prevalence_pct": 15.2, "half_life_days": 18.0, "washing_reach_pct": 32.0},
+    {"name": "Linuron", "who_class": "Class II", "eu_mrl_ppm": 0.01, "prevalence_pct": 12.7, "half_life_days": 45.0, "washing_reach_pct": 35.0},
+    {"name": "Carbendazim", "who_class": "Class Ib", "eu_mrl_ppm": 0.01, "prevalence_pct": 11.3, "half_life_days": 40.0, "washing_reach_pct": 28.0},
+    {"name": "Imidacloprid", "who_class": "Class II", "eu_mrl_ppm": 0.01, "prevalence_pct": 10.5, "half_life_days": 35.0, "washing_reach_pct": 20.0}
+]
+
+PCPB_BIOPESTICIDES = {"total_registered": 109, "applied_volume_share_pct": 2.0}
+ORGANIC_STATISTICS = {"certified_hectares": 171298, "certified_farms": 62626, "koan_pgs_farmers": 1634}
 
 COUNTY_PRPI_INDEX = [
     {"county": "Kirinyaga", "prpi_score": 88.5, "risk_category": "CRITICAL", "primary_crop": "Tomatoes (Mwea)", "lat": -0.500, "lng": 37.280},
     {"county": "Kiambu", "prpi_score": 85.2, "risk_category": "CRITICAL", "primary_crop": "Kale & Spinach", "lat": -1.171, "lng": 36.835},
-    {"county": "Murang'a", "prpi_score": 79.4, "risk_category": "HIGH", "primary_crop": "French Beans & Avocado", "lat": -0.783, "lng": 37.150},
+    {"county": "Murang'a", "prpi_score": 79.4, "risk_category": "HIGH", "primary_crop": "French Beans", "lat": -0.783, "lng": 37.150},
     {"county": "Nyandarua", "prpi_score": 76.8, "risk_category": "HIGH", "primary_crop": "Potatoes & Cabbage", "lat": -0.400, "lng": 36.500},
-    {"county": "Nakuru", "prpi_score": 74.1, "risk_category": "HIGH", "primary_crop": "Carrots & Vegetables", "lat": -0.283, "lng": 36.067},
-    {"county": "Machakos", "prpi_score": 68.5, "risk_category": "MODERATE", "primary_crop": "Green Grams & Vegetables", "lat": -1.517, "lng": 37.267},
-    {"county": "Kajiado", "prpi_score": 64.2, "risk_category": "MODERATE", "primary_crop": "Onions & Tomatoes", "lat": -2.100, "lng": 36.800},
-    {"county": "Meru", "prpi_score": 72.0, "risk_category": "HIGH", "primary_crop": "Miraa & Vegetables", "lat": 0.050, "lng": 37.650},
-    {"county": "Trans Nzoia", "prpi_score": 61.0, "risk_category": "MODERATE", "primary_crop": "Maize & Legumes", "lat": 1.017, "lng": 35.000},
-    {"county": "Uasin Gishu", "prpi_score": 58.3, "risk_category": "MODERATE", "primary_crop": "Wheat & Vegetables", "lat": 0.517, "lng": 35.283}
-]
-
-TAKWIMU_CHARTER_PRINCIPLES = [
-    "1. Empirical Grounding: All residue estimates anchor directly to validated laboratory GC-MS/LC-MS data.",
-    "2. Methodological Transparency: Formulas (SCS-CN, degradation half-lives, MRL thresholds) are fully published and inspectable.",
-    "3. Open Spatial Joining: Standardized spatial schemas enable seamless cross-silo joining across administrative, market, and hydrological layers.",
-    "4. Dynamic Audit Trails: Every computation, model prediction, and advisory generated writes to a cryptographic-ready event log.",
-    "5. Unbiased Limits Disclosure: Practical agricultural realities (organic yield gaps, spray drift) are explicitly declared alongside benefits.",
-    "6. Data Sovereignty & Privacy: Zero PII of individual smallholders or market traders leaves the operational sandbox.",
-    "7. Replicable API Standards: REST and JSON-RPC interfaces ensure byte-identical reproducibility across Python, JavaScript, and R runtimes."
+    {"county": "Nakuru", "prpi_score": 74.1, "risk_category": "HIGH", "primary_crop": "Carrots & Peas", "lat": -0.283, "lng": 36.067},
+    {"county": "Garissa", "prpi_score": 79.4, "risk_category": "HIGH", "primary_crop": "Tomatoes & Onions", "lat": -0.4532, "lng": 39.6460}
 ]
