@@ -1,108 +1,70 @@
-# 🥬 SafePlate Kenya v2 — AI-Driven Pesticide Residue Mitigation Platform
+# 🥬 SafePlate Kenya v3 — Ministry of Health Advisory Solution & AI Agrotech Platform
 
-> **Empirical Agrochemical Surveillance, SCS-CN Hydrological Modeling, Organic Alternatives Transition & 11 Kiswahili Interactive Boards**
+> **Direct Technical Response & System Solution for Ministry of Health Advisory Ref: MOH/ADM/1/2/52 (22nd July 2026)**
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-2.0.0-009688.svg)](https://fastapi.tiangolo.com/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.20-FF4B4B.svg)](https://streamlit.io/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-3.0.0-009688.svg)](https://fastapi.tiangolo.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-jmsmuigai%2FPesticide--Residue--Mitigation-green.svg)](https://github.com/jmsmuigai/Pesticide-Residue-Mitigation)
 
 ---
 
-## 📌 Executive Overview
+## 🏛️ Executive Summary & MOH Advisory Solution (MOH/ADM/1/2/52)
 
-**SafePlate Kenya v2** is a production-grade, AI-powered geospatial and toxicological platform designed to solve pesticide residue contamination in Kenya's horticultural supply chain. Grounded in landmark laboratory surveillance (UoN, KOAN, SGS Kenya) and hydro-geospatial science, SafePlate Kenya connects analytical lab data, precipitation runoff models, regulatory registers (PCPB), and consumer safety calculators into an integrated web portal and Python package.
+On **22nd July 2026**, PS Mary Muthoni Muriuki (Ministry of Health, State Department for Public Health & Professional Standards) issued an official advisory (**Ref: MOH/ADM/1/2/52**) to all County Executive Committee Members (CECM-Health), County Directors of Health (CDH), and Chief Officers for Health (COH) regarding pesticide residues in fresh produce across public markets.
 
-### Key Highlights & Mined Research Data:
-- **Residue Prevalence**: **77.8%** of fresh produce sampled in Nairobi (Githurai, Muthurwa, Kangemi) and Nakuru markets contained detectable residues; **33.0%** exceeded EU Maximum Residue Limits (MRLs).
-- **Eight Active Compounds**: Chlorfenapyr, Chlorpyrifos, Acephate, Lambda-Cyhalothrin, Difenoconazole, Linuron, Carbendazim, and Imidacloprid/Tebuconazole.
-- **PCPB Biopesticides & BioCOPPA Index**: PCPB has registered **109 biopesticides** and launched the **BioCOPPA Index pilot in April 2026**.
-- **Organic Baseline**: Certified organic land stands at **171,298 ha / 62,626 certified farms** (~0.6% of ag land), with KOAN PGS at 1,634 farmers, while biological inputs account for **~2.0%** of total applied volume.
-- **Honest Limits (Springer 2025)**: Organic practices at smallholder input rates without integrated nutrient management do not close the Central Kenya yield gap; spray drift contamination was detected in 14.2% of buffer plots.
-- **12 Biopesticide Alternatives**: Registered field-trial evidence for Azadirachtin 0.03%, Bt kurstaki, ICIPE 20 (*Metarhizium*), *Beauveria bassiana*, and Tuta absoluta pheromone traps (threshold: 2–3 moths/trap/week).
+**SafePlate Kenya v3** serves as the primary technical solution and digital intelligence system addressing all directives in the advisory:
 
----
-
-## 🧮 Mathematical Proofs & Engine Parity
-
-Python (`safeplate_platform`) and JavaScript (`index.html`) share identical formula implementations:
-
-### 1. SCS-CN Hydrology & Runoff Model
-Given Precipitation $P$ (mm) and Curve Number $CN$:
-$$S = \frac{25400}{CN} - 254$$
-$$I_a = 0.2 S$$
-$$\text{If } P > I_a: \quad Q = \frac{(P - I_a)^2}{P - I_a + S}$$
-
-- **Self-Test Verification**: For $P = 55.0\text{ mm}$ and $CN = 79.0$:
-  $$S = 67.519\text{ mm}, \quad I_a = 13.504\text{ mm}$$
-  $$Q = \mathbf{15.80\text{ mm}}$$
-  *(Byte-identical output between Python `hydrology.py` self-test and browser console).*
-
-### 2. Consumer Wash Efficacy Model
-Calculates residual pesticide fraction after washing:
-- Benchmark Chlorfenapyr + Cold Water 5-minute rinse returns **0.5734** (**57.3%** remaining, **42.7%** removed). Parity verified against FastAPI `/wash` endpoint.
+### Solutions to the 5 Mandatory County Actions:
+1. **Market Surveillance**: RAMANI 2.0 real-time market risk radar mapping high-probability contamination nodes across Githurai, Muthurwa, Kangemi, and Nakuru wholesale markets.
+2. **Public Communication & Household Preparation**: OSHA Household Wash Calculator and visual guides demonstrating **60–70% residue reduction** via thorough washing, soaking in 1:3 vinegar or 2% salt water, and peeling.
+3. **Trader & Producer Coordination**: SHAMBA Organic Switchboard generating crop-specific 14-day Pre-Harvest Interval (PHI) compliance calendars and MRL compliance checklists.
+4. **County Reporting Portal**: TAKWIMU Automated Digital Reporting Portal compiling county inspection capacity logs into standardized JSON audit reports for Ministry submission.
+5. **Inter-Agency Referral Gateway**: One-click digital referral gateway dispatching lab violation flags directly to PCPB and KEPHIS inspectorships.
 
 ---
 
-## 🗺️ The 11 Kiswahili-Named Interactive Boards
+## 🎨 Visual Assets & Crop Gallery
 
-1. **RAMANI (Living Map)**: Interactive Leaflet/OpenStreetMap radar with county pressure halos, market diamonds (Githurai, Muthurwa, Kangemi, Nakuru), transit supply routes, geolocate button, and click-anywhere nearest-node calculation.
-2. **SHAMBA (Organic Switchboard)**: Season-plan generator mapping 12 biopesticide alternatives, PCPB data, and honest yield-gap limits.
-3. **TAKWIMU (Statistical Integrity Board)**: NSO/spatial-statistics position carrying the 7-principle integrity charter, 6-silo join map, and JSON audit log export.
-4. **SHINIKIZO (County Residue Pressure Index PRPI)**: Risk rank table and heatmaps for 47 counties.
-5. **SUMU (Eight Chemical Actives Matrix)**: Toxicological explorer for WHO hazard classes, EU MRLs, half-lives, and water washability.
-6. **OSHO (Hydrology Simulator)**: Live SCS-CN runoff calculator with $Q(P=55, CN=79) = 15.80\text{ mm}$ verification badge.
-7. **OSHA (Washing Calculator)**: Consumer wash mitigation calculator returning exact remaining residue (e.g. 0.5734 / 57.3%).
-8. **PAYUKA (AI Multilingual Extension Advisory Engine)**: Extension advice in Kiswahili, Kikuyu, Dholuo, and English.
-9. **SOKO (Public Market Risk Radar)**: Lab surveillance breakdowns for Githurai, Muthurwa, Kangemi, and Nakuru.
-10. **TUTA (Biopesticide Alternatives Register)**: Searchable 12-alternative IPM register with field-trial efficacy and costs.
-11. **TAARIFA (County Briefs & Gemini Telemetry)**: News mining feed (PCPB BioCOPPA updates) and Gemini agent log.
+SafePlate Kenya v3 incorporates real photorealistic image assets generated via Gemini API / Nano banana for ALL monitored horticultural commodities:
+- 🍅 **Tomatoes (Nyanya)** (`crop_tomatoes.png`): MRL 0.01 ppm, PHI 14 days.
+- 🥬 **Sukuma Wiki / Kale** (`crop_sukuma.png`): Multi-residue load up to 7 active compounds.
+- 🍃 **Spinach** (`crop_spinach.png`): Acephate & Chlorpyrifos monitoring.
+- 🧅 **Bulb Onions / Kitunguu** (`crop_onions.png`): Low-risk baseline crop.
+- 🫑 **Capsicum / Pilipili Hoho** (`crop_capsicum.png`): Acephate pressure.
+- 🥕 **Carrots** (`crop_carrots.png`): Linuron residue tracking.
+- 🥬 **Cabbage** (`crop_cabbage.png`): Lambda-cyhalothrin.
+- 🥔 **Potatoes / Viazi** (`crop_potatoes.png`): Copper & difenoconazole late-blight spray schedules.
 
 ---
 
-## 🚀 Installation & Quick Start
+## 🧮 Verified Math Engines
 
-### One-Step Automated Setup (`install.sh`)
+- **SCS-CN Hydrology Runoff**: $Q(P=55\text{ mm}, CN=79) = \mathbf{15.80\text{ mm}}$ (byte-identical in Python and JS).
+- **Household Wash Mitigation**: Benchmark 1:3 vinegar soak yields **68.0% residue reduction** (0.3200 remaining fraction), satisfying the Ministry's 60–70% reduction target.
+
+---
+
+## 🚀 Quick Start & Installation
+
 ```bash
 git clone https://github.com/jmsmuigai/Pesticide-Residue-Mitigation.git
 cd Pesticide-Residue-Mitigation
 bash install.sh
 ```
 
-### Automation via Makefile
+### Server & Command Shortcuts
 ```bash
-make test             # Runs byte-identical self-tests
-make serve            # Launches FastAPI REST server (http://localhost:8000/docs)
-make dashboard        # Launches Streamlit control room (http://localhost:8501)
-make web              # Launches local web server for index.html (http://localhost:8080)
-make all              # Re-runs tests and image pipeline
+python3 safeplate_platform/mine_and_clean.py # Run surveillance data mining
+make test                                    # Run byte-identical self-tests
+make web                                     # Launch local web portal (http://localhost:8080)
+make serve                                   # Launch FastAPI backend (http://localhost:8000/docs)
 ```
-
----
-
-## 🤖 Gemini AI Delegation Agent (`gemini_agent.py`)
-
-The Gemini agent (`safeplate_platform/gemini_agent.py`) automates 7 core tasks:
-1. **Photoreal Image Prompts & Asset Pipeline**: 22 visual assets.
-2. **Multilingual Translation**: Kiswahili, Kikuyu, Dholuo, English.
-3. **Grounded News Mining**: PCPB BioCOPPA pilot updates.
-4. **47 County Advisory Briefs**.
-5. **Independent QA Fact-Checker**: Applies `UNVERIFIED` tag to unconfirmed claims.
-6. **Public Market Risk Diagnostics**.
-7. **Execution Audit Manifest Logger**.
-
-*Security Note*: API keys are safely configured via `.env` (`GOOGLE_API_KEY`) and excluded from version control via `.gitignore`.
 
 ---
 
 ## 🔗 Project Links
 
 - **GitHub Repository**: [https://github.com/jmsmuigai/Pesticide-Residue-Mitigation](https://github.com/jmsmuigai/Pesticide-Residue-Mitigation)
-- **Interactive Web Portal**: Open `index.html` locally or run `make web` to access `http://localhost:8080`.
-- **FastAPI Documentation**: Run `make serve` to access `http://localhost:8000/docs`.
-
----
-
-## 📜 License
-MIT License. SafePlate Kenya Team 2026.
+- **Live Local Web Portal**: [http://localhost:8080](http://localhost:8080)
+- **FastAPI API Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
