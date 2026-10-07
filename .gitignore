@@ -23,3 +23,9 @@ extracted_doc.txt
 # Temp logs
 *.log
 repo_clone/
+
+# Secrets and local environment (added by docs refresh)
+.env.*
+!.env.example
+serviceAccount*.json
+node_modules/
